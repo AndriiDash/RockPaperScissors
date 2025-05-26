@@ -1,0 +1,15 @@
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/bin/Debug/net9.0/RockPaperScissors
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/bin/Debug/net9.0/RockPaperScissors.deps.json
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/bin/Debug/net9.0/RockPaperScissors.runtimeconfig.json
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/bin/Debug/net9.0/RockPaperScissors.dll
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/bin/Debug/net9.0/RockPaperScissors.pdb
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/obj/Debug/net9.0/RockPaperScissors.GeneratedMSBuildEditorConfig.editorconfig
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/obj/Debug/net9.0/RockPaperScissors.AssemblyInfoInputs.cache
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/obj/Debug/net9.0/RockPaperScissors.AssemblyInfo.cs
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/obj/Debug/net9.0/RockPaperScissors.csproj.CoreCompileInputs.cache
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/obj/Debug/net9.0/RockPaperScissors.sourcelink.json
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/obj/Debug/net9.0/RockPaperScissors.dll
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/obj/Debug/net9.0/refint/RockPaperScissors.dll
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/obj/Debug/net9.0/RockPaperScissors.pdb
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/obj/Debug/net9.0/RockPaperScissors.genruntimeconfig.cache
+/Users/andrii.shcherbyna/RiderProjects/VARTO/RockPaperScissors/RockPaperScissors/obj/Debug/net9.0/ref/RockPaperScissors.dll
