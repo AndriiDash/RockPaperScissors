@@ -14,6 +14,8 @@ internal class Program
         UserStatistics(player, age, roundsPlayed, wins);
         Console.WriteLine("======================================");
         ReadyOr();
+        WeaponsIntro();
+        ChooseWeapon();
     }
 // Introduction text for the player when open the game project
     private static void Intro()
@@ -83,10 +85,45 @@ internal class Program
             if (input == "Y")
                 return true;
             else if (input == "N")
-                return false;
-            else 
+                Console.WriteLine("You chose not to play. Type 'Exit' to close the game.");
+            string exitInput = Console.ReadLine()?.Trim(); 
+            if (exitInput?.ToLower() == "exit")
+                Environment.Exit(0);
+            else
                 Console.WriteLine("Press enter Y(yes) or N(no) ");
         } while (true);
     }
+// Information about each weapon player can choose
+    private static void WeaponsIntro()
+    {
+        Console.WriteLine("Please choose 0 of 2 weapons: ");
+        Console.WriteLine("0.Rock");
+        Console.WriteLine("1.Paper");
+        Console.WriteLine("2.Scissors");
+    }
+    
+    //Player is choosing the weapon to play agains AI
+    private static Weapons ChooseWeapon()
+        {
+        int choice;
+        do
+        {
+            string input = Console.ReadLine();
+            if (!int.TryParse(input, out choice))
+            {
+                Console.WriteLine("Invalid choice. Try again. Please enter a number from 1 to 3.");
+                continue;
+            }
 
-}
+            if (choice < 1 || choice > 3)
+            {
+                Console.WriteLine("Invalid choice. Please choose 1, 2, or 3");
+                continue;
+            }
+
+            Console.WriteLine($"You chose:{(Weapons)choice}");
+            return (Weapons)choice;
+    } while (true);
+    }
+    }
+
