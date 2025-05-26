@@ -1,19 +1,22 @@
 ﻿namespace RockPaperScissors;
 
-class Program
+internal class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
-        int roundsAmount;
-        int score;
         string computerAI;
+        int roundsPlayed = 0;
+        int wins = 0;
         Intro();
         string player = GetValidName();
         Console.WriteLine($"Nice to have you here: {player}!  One more step to proceed.");
-        CheckAge();
+        int age = CheckAge();
+        UserStatistics(player, age, roundsPlayed, wins);
+        Console.WriteLine("======================================");
+        ReadyOr();
     }
-
-    static void Intro()
+// Introduction text for the player when open the game project
+    private static void Intro()
     {
         Console.WriteLine("@@@@ Welcome to Rock Paper Scissors @@@@");
         Console.WriteLine("           !!!Attention!!! ");
@@ -21,28 +24,23 @@ class Program
         Console.WriteLine("---------------------------------------");
         Console.WriteLine("Please enter your nickname: ");
     }
-
-    static string GetValidName()
+    //Checking players nickname
+    private static string GetValidName()
     {
         string nickname;
         do
         {
-
-            nickname = (Console.ReadLine());
+            nickname = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(nickname))
-            {
                 Console.WriteLine("Name cannot be empty! Try again.");
-            }
-            else if (!nickname.All(char.IsLetter))
-            {
-                Console.WriteLine("The name must contain only letters. Try again");
-            }
+            else if (!nickname.All(char.IsLetter)) Console.WriteLine("The name must contain only letters. Try again");
         } while (string.IsNullOrWhiteSpace(nickname) || !nickname.All(char.IsLetter));
+
         return nickname;
     }
-    
-    
-    static int CheckAge()
+
+    //Checking players age
+    private static int CheckAge()
     {
         int age;
         do
@@ -57,13 +55,38 @@ class Program
                 continue;
             }
 
-            if (age < 12 || age > 99)
-            {
-                Console.WriteLine("Age must be between 12 and 99. Try again.");
-            }
+            if (age < 12 || age > 99) Console.WriteLine("Age must be between 12 and 99. Try again.");
         } while (age < 12 || age > 99);
 
         Console.WriteLine("User indentification complete!.");
         return age;
     }
+
+    //Shows general statistic about the player, nickname, age, rounds with amount of victories
+    private static void UserStatistics(string nickname, int age, int rounds, int wins)
+    {
+        Console.WriteLine("Your statistics for game session:");
+        Console.WriteLine($"Your nickname: {nickname}");
+        Console.WriteLine($"Age: {age}");
+        Console.WriteLine($"Rounds played: {rounds}");
+        Console.WriteLine($"Victories: {wins}");
+    }
+    // Check if player is ready or not to start the game
+    private static bool ReadyOr()
+    {
+        string input;
+        do
+        {
+            Console.WriteLine("Are you ready start the game? Y/N: ");
+            input = Console.ReadLine()?.Trim().ToUpper();
+
+            if (input == "Y")
+                return true;
+            else if (input == "N")
+                return false;
+            else 
+                Console.WriteLine("Press enter Y(yes) or N(no) ");
+        } while (true);
+    }
+
 }
