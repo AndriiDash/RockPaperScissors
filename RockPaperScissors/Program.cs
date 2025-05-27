@@ -15,7 +15,9 @@ internal class Program
         Console.WriteLine("======================================");
         ReadyOr();
         WeaponsIntro();
-        ChooseWeapon();
+        Weapons playerChoice = ChooseWeapon();
+        Weapons aiChoice = (Weapons)new Random().Next(1, 4);
+        DetermineRound(playerChoice, aiChoice);
     }
 // Introduction text for the player when open the game project
     private static void Intro()
@@ -97,14 +99,14 @@ internal class Program
     private static void WeaponsIntro()
     {
         Console.WriteLine("Please choose 0 of 2 weapons: ");
-        Console.WriteLine("0.Rock");
-        Console.WriteLine("1.Paper");
-        Console.WriteLine("2.Scissors");
+        Console.WriteLine("1.Rock");
+        Console.WriteLine("2.Paper");
+        Console.WriteLine("3.Scissors");
     }
     
     //Player is choosing the weapon to play agains AI
     private static Weapons ChooseWeapon()
-        {
+    {
         int choice;
         do
         {
@@ -123,7 +125,27 @@ internal class Program
 
             Console.WriteLine($"You chose:{(Weapons)choice}");
             return (Weapons)choice;
-    } while (true);
+        } while (true);
     }
+
+    private static void DetermineRound(Weapons playerChoice, Weapons aiChoice)
+        {
+            if (playerChoice == aiChoice)
+            {
+                Console.WriteLine($"Draw! You both chose {playerChoice}.");
+            }
+            else if ((playerChoice == Weapons.Rock && aiChoice == Weapons.Scissors) ||
+                     (playerChoice == Weapons.Scissors && aiChoice == Weapons.Paper) ||
+                     (playerChoice == Weapons.Paper && aiChoice == Weapons.Rock))
+            {
+                Console.WriteLine($"{playerChoice} beats {aiChoice} — You win!");
+            }
+            else
+            {
+                Console.WriteLine($"{aiChoice} beats {playerChoice} — AI wins!");
+            }
+        }
+        
     }
+
 
