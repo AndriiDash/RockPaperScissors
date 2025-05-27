@@ -11,14 +11,9 @@ internal class Program
         string player = GetValidName();
         Console.WriteLine($"Nice to have you here: {player}!  One more step to proceed.");
         int age = CheckAge();
-        UserStatistics(player, age, roundsPlayed, wins);
-        Console.WriteLine("======================================");
-        ReadyOr();
-        WeaponsIntro();
-        Weapons playerChoice = ChooseWeapon();
-        Weapons aiChoice = (Weapons)new Random().Next(1, 4);
-        DetermineRound(playerChoice, aiChoice);
+        Showstatistics(player, age, roundsPlayed, wins);
     }
+
 // Introduction text for the player when open the game project
     private static void Intro()
     {
@@ -145,7 +140,84 @@ internal class Program
                 Console.WriteLine($"{aiChoice} beats {playerChoice} — AI wins!");
             }
         }
-        
+    // Play a 3 battle between player and AI, print result and random encouragement
+    private static (int playerWins, int aiWins) PlayBattle()
+    {
+        int playerWins = 0;
+        int aiWins = 0;
+        int totalRounds = 3;
+
+        for (int i = 1; i <= totalRounds; i++)
+        {
+            Console.WriteLine($"\nRound {i}:");
+            WeaponsIntro();
+            Weapons playerChoice = ChooseWeapon();
+            Weapons aiChoice = (Weapons)new Random().Next(1, 4);
+            DetermineRound(playerChoice, aiChoice);
+
+            if (playerChoice == aiChoice)
+            {
+                continue;
+            }
+            else if ((playerChoice == Weapons.Rock && aiChoice == Weapons.Scissors) ||
+                     (playerChoice == Weapons.Scissors && aiChoice == Weapons.Paper) ||
+                     (playerChoice == Weapons.Paper && aiChoice == Weapons.Rock))
+            {
+                playerWins++;
+            }
+            else
+            {
+                aiWins++;
+            }
+        }
+
+        Console.WriteLine("\n==== Battle Result ====");
+
+        if ((playerWins == 2 && aiWins == 1) || (playerWins == 3))
+        {
+            Console.WriteLine("You won the battle!");
+            PrintRandomMessage(true);
+        }
+        else
+        {
+            Console.WriteLine("You lost the battle.");
+            PrintRandomMessage(false);
+        }
+        return (playerWins, aiWins);
     }
 
+    // Print a random encouragement message depending on whether the player won
+    private static void PrintRandomMessage(bool playerWon)
+    {
+        string[] praise = { "Great job!", "You're a champion!", "That was amazing!" };
+        string[] encouragement = { "Don't give up!", "You’ll get it next time!", "Keep trying!" };
+
+        Random rand = new Random();
+        if (playerWon)
+        {
+            Console.WriteLine(praise[rand.Next(praise.Length)]);
+        }
+        else
+        {
+            Console.WriteLine(encouragement[rand.Next(encouragement.Length)]);
+        }
+    }
+
+    private static void Showstatistics(string player, int age, int roundsPlayed, int wins)
+        {
+            do
+            {
+                Console.WriteLine("======================================");
+                UserStatistics(player, age, roundsPlayed, wins);
+
+                if (!ReadyOr())
+                    break;
+
+                var result = PlayBattle();
+                roundsPlayed += 3;
+                wins += result.playerWins;
+            }
+            while (true);
+        }
+    }
 
