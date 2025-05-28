@@ -64,11 +64,14 @@ internal class Program
     //Shows general statistic about the player, nickname, age, rounds with amount of victories
     private static void UserStatistics(string nickname, int age, int rounds, int wins)
     {
-        Console.WriteLine("Your statistics for game session:");
-        Console.WriteLine($"Your nickname: {nickname}");
-        Console.WriteLine($"Age: {age}");
-        Console.WriteLine($"Rounds played: {rounds}");
-        Console.WriteLine($"Victories: {wins}");
+        Console.WriteLine("\n╔══════════════════════════════════════╗");
+        Console.WriteLine("║         GAME SESSION STATS           ║");
+        Console.WriteLine("╠══════════════════════════════════════╣");
+        Console.WriteLine($"║ Nickname       : {nickname,-20}║");
+        Console.WriteLine($"║ Age            : {age,-20}║");
+        Console.WriteLine($"║ Rounds played  : {rounds,-20}║");
+        Console.WriteLine($"║ Victories      : {wins,-20}║");
+        Console.WriteLine("╚══════════════════════════════════════╝\n");
     }
     // Check if player is ready or not to start the game
     private static bool ReadyOr()
@@ -153,6 +156,8 @@ internal class Program
             WeaponsIntro();
             Weapons playerChoice = ChooseWeapon();
             Weapons aiChoice = (Weapons)new Random().Next(1, 4);
+            PrintAsciiWeapon(playerChoice, "Player");
+            PrintAsciiWeapon(aiChoice, "AI");
             DetermineRound(playerChoice, aiChoice);
 
             if (playerChoice == aiChoice)
@@ -219,5 +224,36 @@ internal class Program
             }
             while (true);
         }
-    }
 
+    private static void PrintAsciiWeapon(Weapons weapon, string owner)
+    {
+        Console.WriteLine($"\n{owner} chose: {weapon}");
+        switch (weapon)
+        {
+            case Weapons.Rock:
+                Console.WriteLine("    _______");
+                Console.WriteLine("---'   ____)");
+                Console.WriteLine("      (_____)");
+                Console.WriteLine("      (_____)");
+                Console.WriteLine("      (____)");
+                Console.WriteLine("---.__(___)");
+                break;
+            case Weapons.Paper:
+                Console.WriteLine("     _______");
+                Console.WriteLine("---'   ____)____");
+                Console.WriteLine("          ______)");
+                Console.WriteLine("          _______)");
+                Console.WriteLine("         _______)");
+                Console.WriteLine("---.__________)");
+                break;
+            case Weapons.Scissors:
+                Console.WriteLine("    _______");
+                Console.WriteLine("---'   ____)____");
+                Console.WriteLine("          ______)");
+                Console.WriteLine("       __________)");
+                Console.WriteLine("      (____)");
+                Console.WriteLine("---.__(___)");
+                break;
+        }
+    }
+}
